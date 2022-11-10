@@ -1,13 +1,16 @@
 # CptS 437 Machine Learning Course Project
 
 ## TABLE OF CONTENTS
-- [1. Course Information](#1-course-information)
-    - [Course Prerequisites](#course-prerequisites)
-- [2. Team Information](#2-team-information)
-- [3. Project Information](#3-project-information)
+- [CptS 437 Machine Learning Course Project](#cpts-437-machine-learning-course-project)
+  - [TABLE OF CONTENTS](#table-of-contents)
+  - [1. Course Information](#1-course-information)
+    - [Course Prerequisites:](#course-prerequisites)
+  - [2. Team Information](#2-team-information)
+  - [3. Project Information](#3-project-information)
     - [Problem](#problem)
     - [Data](#data)
     - [Solution](#solution)
+  - [4. References](#4-references)
 
 ---
 
@@ -54,3 +57,7 @@
 ### Data
 
 ### Solution
+
+
+## 4. References
+

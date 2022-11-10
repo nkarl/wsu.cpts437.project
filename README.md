@@ -43,7 +43,7 @@
 ## 2. Team Information
 
 - Charles Nguyen, charles.norden@wsu.edu
-- placeholder2
+- Denise Tanumihardja, denise.tanumihardja@wsu.edu
 - placeholder3
 - placeholder4
 

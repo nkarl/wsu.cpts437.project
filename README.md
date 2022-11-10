@@ -68,3 +68,4 @@ Dr. Cook recommended a Convolutional Neural Net (CNN) for our project.
 
 ## 4. References
 
+- [Colab notebook provided by Dr. Cook](https://colab.research.google.com/drive/1aEz_5raMk9EbJDDrT0AMN_VTFe0MdZSu?usp=sharing)

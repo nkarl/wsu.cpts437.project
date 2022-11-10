@@ -47,8 +47,6 @@
 
 - Charles Nguyen, charles.norden@wsu.edu
 - Denise Tanumihardja, denise.tanumihardja@wsu.edu
-- placeholder3
-- placeholder4
 
 ## 3. Project Information
 

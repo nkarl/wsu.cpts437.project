@@ -18,7 +18,10 @@
 
 - Semester: Fall 2023
 - Professor: Dianne Cook, djcook@wsu.edu
+    - Office Hour: [Tue Thu 10:30-11:00am](https://wsu.zoom.us/j/93838519178?pwd=cTJoSGtJVU9RL29FRlU2YjhEMHU3UT09)
 - TA: Ramesh Sah, ramesh.sah@wsu.edu
+    - Office Hour: [Mon Tue 2:30-04:00pm](https://wsu.zoom.us/j/8991996138 )
+
 
 ### Course Prerequisites:
 
@@ -46,15 +49,21 @@
 ## 2. Team Information
 
 - Charles Nguyen, charles.norden@wsu.edu
+    - Major: Computer Science, B.Sci.
 - Denise Tanumihardja, denise.tanumihardja@wsu.edu
+    - Major: **placeholder**
 
 ## 3. Project Information
 
 ### Problem
 
+Use a neural network to perform a binary classfication on some fMRI data of some neurological condition. We want a predictive model that can distinguish between *healthy* and *diseased*.
+
 ### Data
 
 ### Solution
+
+Dr. Cook recommended a Convolutional Neural Net (CNN) for our project.
 
 
 ## 4. References

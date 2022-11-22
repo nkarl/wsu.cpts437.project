@@ -60,6 +60,13 @@
 Use a neural network to perform a binary classfication on some fMRI data of some neurological condition. We want a predictive model that can distinguish between *healthy* and *diseased*.
 
 ### Data
+1. https://neurovault.org/collections/5007/ (A Resting-State Network Comparison of Combat-Related PTSD with Combat-Exposed and Civilian Controls)
+2. https://neurovault.org/collections/8400/ (Differential brain responses for perception of pain during empathic response in binge drinkers compared to non-binge drinkers)
+
+Unsure:
+1. https://openneuro.org/datasets/ds004302/versions/1.0.0 (Brain correlates of speech perception in schizophrenia patients with and without auditory hallucinations)
+2. https://neurovault.org/collections/1015/ (Functional MRI of emotional memory in adolescent depression)
+3. https://neurovault.org/collections/3340/ (Reward learning over weeks versus minutes increases the neural representation of value in the human brain)
 
 ### Solution
 

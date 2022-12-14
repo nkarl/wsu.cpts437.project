@@ -9,11 +9,7 @@ def get_model(width=64, height=64, depth=64):
 
     inputs = keras.Input((width, height, depth, 1))
 
-    x = layers.Conv3D(filters=32, kernel_size=3, activation="relu")(inputs)
-    x = layers.MaxPool3D(pool_size=2)(x)
-    x = layers.BatchNormalization()(x)
-
-    x = layers.Conv3D(filters=32, kernel_size=3, activation="relu")(x)
+    x = layers.Conv3D(filters=64, kernel_size=3, activation="relu")(inputs)
     x = layers.MaxPool3D(pool_size=2)(x)
     x = layers.BatchNormalization()(x)
 
@@ -25,8 +21,12 @@ def get_model(width=64, height=64, depth=64):
     x = layers.MaxPool3D(pool_size=2)(x)
     x = layers.BatchNormalization()(x)
 
+    x = layers.Conv3D(filters=256, kernel_size=3, activation="relu")(x)
+    x = layers.MaxPool3D(pool_size=2)(x)
+    x = layers.BatchNormalization()(x)
+
     x = layers.GlobalAveragePooling3D()(x)
-    x = layers.Dense(units=256, activation="relu")(x)
+    x = layers.Dense(units=512, activation="relu")(x)
     x = layers.Dropout(0.3)(x)
 
     outputs = layers.Dense(units=1, activation="sigmoid")(x)
@@ -36,11 +36,11 @@ def get_model(width=64, height=64, depth=64):
     return model
 
 
-def build_model(learn_rate=0.0001, decay_steps=100000, decay_rate=0.96):
+def build_model(dim, learn_rate=0.0001, decay_steps=100000, decay_rate=0.96):
     """
     Build model.
     """
-    model = get_model(width=64, height=64, depth=64)
+    model = get_model(width=dim.x, height=dim.y, depth=dim.z)
     model.summary()
     
     lr_schedule = keras.optimizers.schedules.ExponentialDecay(
@@ -75,7 +75,7 @@ def dataset_loader(x, y, batch_size=2):
     return train_set
 
 
-def train_model(model, train_dataset, validation_dataset, epoch=10):
+def train_model(model, train_dataset, validation_dataset, epochs=10):
     """
     Train the model given train and validation sets in some epochs.
     """
@@ -85,7 +85,6 @@ def train_model(model, train_dataset, validation_dataset, epoch=10):
     )
     early_stopping_cb = keras.callbacks.EarlyStopping(monitor="val_acc", patience=15)
 
-    epochs = 10
     model.fit(
         train_dataset,
         validation_data=validation_dataset,

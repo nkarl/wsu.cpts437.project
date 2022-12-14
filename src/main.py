@@ -26,7 +26,17 @@ print(
 train_dataset = dataset_loader(x_train, y_train)
 validation_dataset = dataset_loader(x_val, y_val)
 #Build the model
-model = build_model(learn_rate=0.0001, decay_steps=100000, decay_rate=0.96)
+class ImageSize:
+    def __init__(self, x, y, z):
+        self.x = x
+        self.y = y
+        self.z = z
+        pass
+
+
+dim=ImageSize(64, 64, 64)
+
+model = build_model(dim, learn_rate=0.0001, decay_steps=100000, decay_rate=0.96)
 # Train the model, doing validation at the end of each epoch
 train_model(model, train_dataset, validation_dataset, epoch=20)
 

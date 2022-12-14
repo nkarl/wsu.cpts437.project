@@ -10,7 +10,8 @@
     - [Problem](#problem)
     - [Data](#data)
     - [Solution](#solution)
-  - [4. References](#4-references)
+    - [Challenges & Findings](#challenges-and-findings)
+  - [4. Links & References](#4links-and-references)
 
 ---
 

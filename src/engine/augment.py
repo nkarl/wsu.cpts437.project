@@ -1,12 +1,12 @@
-import random
-import tensorflow as tf
-
+import random, tensorflow as tf
 from scipy import ndimage
 
 
 @tf.function
 def rotate(volume):
-    """Rotate the volume by a few degrees"""
+    """
+    Rotate the volume by a few degrees
+    """
 
     def scipy_rotate(volume):
         # define some rotation angles
@@ -24,7 +24,9 @@ def rotate(volume):
 
 
 def train_preprocessing(volume, label):
-    """Process training data by rotating and adding a channel."""
+    """
+    Process training data by rotating and adding a channel.
+    """
     # Rotate volume
     volume = rotate(volume)
     volume = tf.expand_dims(volume, axis=3)
@@ -32,6 +34,8 @@ def train_preprocessing(volume, label):
 
 
 def validation_preprocessing(volume, label):
-    """Process validation data by only adding a channel."""
+    """
+    Process validation data by only adding a channel.
+    """
     volume = tf.expand_dims(volume, axis=3)
     return volume, label

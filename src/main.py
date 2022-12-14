@@ -9,13 +9,14 @@ from engine.model import *
 
 
 # Load the data files.
-target='Age' if len(sys.argv) < 2 else sys.argv[1]
+target='age' if len(sys.argv) < 2 else sys.argv[1]
 scans_unmeddep, labels_unmeddep, scans_other, labels_other = datasets(target=target)
-tt_split = int((len(scans_unmeddep) + len(scans_other)) * 0.7)
-x_train = np.concatenate((scans_unmeddep[:tt_split], scans_other[:tt_split]), axis=0)
-y_train = np.concatenate((labels_unmeddep[:tt_split], labels_other[:tt_split]), axis=0)
-x_val = np.concatenate((scans_unmeddep[tt_split:], scans_other[tt_split:]), axis=0)
-y_val = np.concatenate((labels_unmeddep[tt_split:], labels_other[tt_split:]), axis=0)
+split_unmed = int(len(scans_unmeddep)*0.7)
+split_other = int(len(scans_other)*0.7)
+x_train = np.concatenate((scans_unmeddep[:split_unmed], scans_other[:split_other]), axis=0)
+y_train = np.concatenate((labels_unmeddep[:split_unmed], labels_other[:split_other]), axis=0)
+x_val = np.concatenate((scans_unmeddep[split_unmed:], scans_other[split_other:]), axis=0)
+y_val = np.concatenate((labels_unmeddep[split_unmed:], labels_other[split_other:]), axis=0)
 print(
     "Number of samples in train and validation are %d and %d."
     % (x_train.shape[0], x_val.shape[0])
@@ -38,7 +39,7 @@ dim=ImageSize(64, 64, 64)
 
 model = build_model(dim, learn_rate=0.0001, decay_steps=100000, decay_rate=0.96)
 # Train the model, doing validation at the end of each epoch
-train_model(model, train_dataset, validation_dataset, epoch=20)
+train_model(model, train_dataset, validation_dataset, epochs=20)
 
 
 # Visualize the model performance

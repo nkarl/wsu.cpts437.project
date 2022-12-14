@@ -55,12 +55,16 @@ def process_scan(path):
 
 def datasets(target: str='age'):
     path_unmeddep = os.path.join(os.getcwd(), f'data.unmeddep/{target}/')
+    print(path_unmeddep)
     scans_unmeddep = glob.glob(path_unmeddep + '*.nii.gz', recursive=False)
+    print(len(scans_unmeddep))
     scans_unmeddep = np.array([process_scan(path) for path in scans_unmeddep])
     labels_unmeddep = np.array([1 for _ in range(len(scans_unmeddep))])
     
     path_other = os.path.join(os.getcwd(), 'data.other/age/')
+    print(path_other)
     scans_other = glob.glob(path_other + '*.nii.gz', recursive=False)
+    print(len(scans_other))
     scans_other = np.array([process_scan(path) for path in scans_other])
     labels_other = np.array([1 for _ in range(len(scans_other))])
 

@@ -22,7 +22,6 @@
 - TA: Ramesh Sah, ramesh.sah@wsu.edu
     - Office Hour: [Mon Tue 2:30-04:00pm](https://wsu.zoom.us/j/8991996138 )
 
-
 ### Course Prerequisites:
 
 - Linear Algebra
@@ -53,6 +52,7 @@
 - Denise Tanumihardja, denise.tanumihardja@wsu.edu
     - Major: NeuroScience, B.Sci.
 
+
 ## 3. Project Information
 
 ### Problem
@@ -68,9 +68,9 @@ Description of the dataset: the data is directly resulted from the study on [Fun
 
 ### Solution
 
-We originally thought of building a convolutional network from scratch, but then quickly realized that it would require a tremendous amount of work beyond our team of two. Furthermore, while working on the data cleaning part, we realized that our data is a 3-dimensional volumetric object, and thus requires us to write convolution functions to beable to apply filters on the data. Realizing this, we researched for template models and found [one](https://keras.io/examples/vision/3D_image_classification/) for convolutional network for 3D image classification.
+We originally thought of building a convolutional network from scratch, but then quickly realized that it would require a tremendous amount of work beyond our team of two. Furthermore, while working on the data cleaning part, we realized that our data is a 3-dimensional volumetric object, and thus requires us to write convolution functions to beable to apply filters on the data. Realizing this, we researched for template models and found [one](https://keras.io/examples/vision/3D_image_classification/) using convolutional network for 3D image classification.
 
-For this project, we decided to make the target label to be `unmeddep`, shorthand for *Unmedicated Depressed*. This is the condition the researchers were looking for. We separated the data into their own labels, primarily correlation by age, groupmean, and SMFQ.
+Adopting this template, for this project, we decided to make the target label of classification to be `unmeddep`, shorthand for *Unmedicated Depressed*. This is the condition the researchers were looking for in the participants. We separated the data into their own labels, primarily correlation by age, groupmean, and SMFQ.
 
 The model can be triggered to start training via the command line with the appropriate keywords:
 
@@ -82,14 +82,14 @@ The model can be triggered to start training via the command line with the appro
 # at the root of the repo, run:
 python ./src/main.py <one of three keywords>
 ```
-
 ### Challenges & Findings
 
-We didn't realize how difficult it was difficult to look for a dataset appropriate for our goal of neuroimage classication. The vast majority of datasets are very small, ranging between 7-50 images. Ours contains 295 images in total, but the actual distinct participants are only 84. We understand that this is the inherent reality of most data out there.
+We didn't realize how difficult it was to look for a dataset appropriate for our goal of neuroimage classication. The vast majority of datasets are very small, ranging between 7-50 images. Ours contains 295 images in total. However, the actual distinct participants number only to 84. We understand that this is the inherent reality of most data out there.
 
-Due to the small data, we are aware that it is difficult to say if the model produce effective outcomes. We observed that on `age` correlation data, the model converged after roughly 15-17 epochs. On the other hand, for `groupmean` and `smfq`, the model converges very quickly after only 10 epochs.
+Due to the small data, we are aware that it is difficult to say if the model produced effective outcomes for classification. We observed that on `age` correlation data, the model converged after roughly 15-17 epochs. On the other hand, for `groupmean` and `smfq`, the model converged very quickly after only 10 epochs. This shows a contrary to the findings from the actual study, where there is a siginficant different between the MDD patients and the controls.
 
 We also have a [Colab notebook](https://colab.research.google.com/drive/1H_pVmqi7TkZQ0G455Blea1DQl8SH5zkz?usp=sharing) avaialble with incomplete code. It took twice as long for the model to train on the Colab notebook so we decided to migrate the code to a local repo. All data and source code can be found in this repo.
+
 
 ## 4. Links & References
 

@@ -80,7 +80,11 @@ def get_model(width=64, height=64, depth=64):
 
     inputs = keras.Input((width, height, depth, 1))
 
-    x = layers.Conv3D(filters=64, kernel_size=3, activation="relu")(inputs)
+    x = layers.Conv3D(filters=32, kernel_size=3, activation="relu")(inputs)
+    x = layers.MaxPool3D(pool_size=2)(x)
+    x = layers.BatchNormalization()(x)
+
+    x = layers.Conv3D(filters=32, kernel_size=3, activation="relu")(x)
     x = layers.MaxPool3D(pool_size=2)(x)
     x = layers.BatchNormalization()(x)
 
@@ -92,12 +96,8 @@ def get_model(width=64, height=64, depth=64):
     x = layers.MaxPool3D(pool_size=2)(x)
     x = layers.BatchNormalization()(x)
 
-    x = layers.Conv3D(filters=256, kernel_size=3, activation="relu")(x)
-    x = layers.MaxPool3D(pool_size=2)(x)
-    x = layers.BatchNormalization()(x)
-
     x = layers.GlobalAveragePooling3D()(x)
-    x = layers.Dense(units=512, activation="relu")(x)
+    x = layers.Dense(units=256, activation="relu")(x)
     x = layers.Dropout(0.3)(x)
 
     outputs = layers.Dense(units=1, activation="sigmoid")(x)
@@ -108,7 +108,7 @@ def get_model(width=64, height=64, depth=64):
 
 
 # Build model.
-model = get_model(width=128, height=128, depth=64)
+model = get_model(width=64, height=64, depth=64)
 model.summary()
 
 initial_learning_rate = 0.0001
@@ -128,7 +128,7 @@ checkpoint_cb = keras.callbacks.ModelCheckpoint(
 early_stopping_cb = keras.callbacks.EarlyStopping(monitor="val_acc", patience=15)
 
 # Train the model, doing validation at the end of each epoch
-epochs = 100
+epochs = 10
 model.fit(
     train_dataset,
     validation_data=validation_dataset,
@@ -137,3 +137,26 @@ model.fit(
     verbose=2,
     callbacks=[checkpoint_cb, early_stopping_cb],
 )
+
+fig, ax = plt.subplots(1, 2, figsize=(20, 3))
+ax = ax.ravel()
+
+for i, metric in enumerate(["acc", "loss"]):
+    ax[i].plot(model.history.history[metric])
+    ax[i].plot(model.history.history["val_" + metric])
+    ax[i].set_title("Model {}".format(metric))
+    ax[i].set_xlabel("epochs")
+    ax[i].set_ylabel(metric)
+    ax[i].legend(["train", "val"])
+
+# Load best weights.
+model.load_weights("3d_image_classification.h5")
+prediction = model.predict(np.expand_dims(x_val[0], axis=0))[0]
+scores = [1 - prediction[0], prediction[0]]
+
+class_names = ["unmeddep", "other"]
+for score, name in zip(scores, class_names):
+    print(
+        "This model is %.2f percent confident that CT scan is %s"
+        % ((100 * score), name)
+    )

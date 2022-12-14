@@ -51,7 +51,7 @@
 - Charles Nguyen, charles.norden@wsu.edu
     - Major: Computer Science, B.Sci.
 - Denise Tanumihardja, denise.tanumihardja@wsu.edu
-    - Major: **placeholder**
+    - Major: NeuroScience, B.Sci.
 
 ## 3. Project Information
 
@@ -61,13 +61,37 @@ Use a neural network to perform a binary classfication on some fMRI data of some
 
 ### Data
 
-- [Functional MRI of emotional memory in adolescent depression](https://neurovault.org/collections/1015/)
+- https://neurovault.org/collections/1015/
+
+Description of the dataset: the data is directly resulted from the study on [Functional MRI of emotional memory in adolescent depression](https://www.sciencedirect.com/science/article/pii/S1878929315001322). The dataset contains fMRI of 56 MDD patients aged 11-17 years. These participants are matched against a group of 30 healthy control participants. The study in fact dropped a portion of the participants due to not meeting the study's criteria. However, there fMRI are still collected and collated into the dataset. In total there are about 84 distinct participant samples.
+
 
 ### Solution
 
-Dr. Cook recommended a Convolutional Neural Net (CNN) for our project.
+We originally thought of building a convolutional network from scratch, but then quickly realized that it would require a tremendous amount of work beyond our team of two. Furthermore, while working on the data cleaning part, we realized that our data is a 3-dimensional volumetric object, and thus requires us to write convolution functions to beable to apply filters on the data. Realizing this, we researched for template models and found [one](https://keras.io/examples/vision/3D_image_classification/) for convolutional network for 3D image classification.
 
+For this project, we decided to make the target label to be `unmeddep`, shorthand for *Unmedicated Depressed*. This is the condition the researchers were looking for. We separated the data into their own labels, primarily correlation by age, groupmean, and SMFQ.
 
-## 4. References
+The model can be triggered to start training via the command line with the appropriate keywords:
 
-- [Colab notebook provided by Dr. Cook](https://colab.research.google.com/drive/1aEz_5raMk9EbJDDrT0AMN_VTFe0MdZSu?usp=sharing)
+- `age`
+- `groupmean`
+- `smfq`
+
+```sh
+# at the root of the repo, run:
+python ./src/main.py <one of three keywords>
+```
+
+### Challenges & Findings
+
+We didn't realize how difficult it was difficult to look for a dataset appropriate for our goal of neuroimage classication. The vast majority of datasets are very small, ranging between 7-50 images. Ours contains 295 images in total, but the actual distinct participants are only 84. We understand that this is the inherent reality of most data out there.
+
+Due to the small data, we are aware that it is difficult to say if the model produce effective outcomes. We observed that on `age` correlation data, the model converged after roughly 15-17 epochs. On the other hand, for `groupmean` and `smfq`, the model converges very quickly after only 10 epochs.
+
+We also have a [Colab notebook](https://colab.research.google.com/drive/1H_pVmqi7TkZQ0G455Blea1DQl8SH5zkz?usp=sharing) avaialble with incomplete code. It took twice as long for the model to train on the Colab notebook so we decided to migrate the code to a local repo. All data and source code can be found in this repo.
+
+## 4. Links & References
+
+- [Functional MRI of emotional memory in adolescent depression](https://www.sciencedirect.com/science/article/pii/S1878929315001322)
+- [3D Image Classication from CT Scans](https://keras.io/examples/vision/3D_image_classification/)

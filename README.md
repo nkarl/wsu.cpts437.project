@@ -60,6 +60,24 @@
 Use a neural network to perform a binary classfication on some fMRI data of some neurological condition. We want a predictive model that can distinguish between *healthy* and *diseased*.
 
 ### Data
+
+#### Picked Datasets
+
+- [Processing of linguistic deixis in people with schizophrenia, with and without auditory verbal hallucinations](https://openneuro.org/datasets/ds004302/versions/1.0.0)
+
+##### Data Cloning Instructions
+
+- [Git](https://git-scm.com/downloads) 
+- [git-annex](https://git-annex.branchable.com/install/)
+
+0. At the project root, run: `git submodule update --init`
+1. `cd` into `./ds004302/`
+2. Run `git annex init && git annex get .`
+
+- [Functional MRI of emotional memory in adolescent depression](https://neurovault.org/collections/1015/)
+
+#### Original Reference Datasets
+
 1. https://neurovault.org/collections/5007/ (A Resting-State Network Comparison of Combat-Related PTSD with Combat-Exposed and Civilian Controls)
 2. https://neurovault.org/collections/8400/ (Differential brain responses for perception of pain during empathic response in binge drinkers compared to non-binge drinkers)
 

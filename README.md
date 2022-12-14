@@ -87,7 +87,17 @@ python ./src/main.py <one of three keywords>
 
 We didn't realize how difficult it was to look for a dataset appropriate for our goal of neuroimage classication. The vast majority of datasets are very small, ranging between 7-50 images. Ours contains 295 images in total. However, the actual distinct participants number only to 84. We understand that this is the inherent reality of most data out there.
 
-Due to the small data, we are aware that it is difficult to say if the model produced effective outcomes for classification. We observed that on `age` correlation data, the model converged after roughly 15-17 epochs. On the other hand, for `groupmean` and `smfq`, the model converged very quickly after only 10 epochs. This shows a contrary to the findings from the actual study, where there is a siginficant different between the MDD patients and the controls.
+Due to the small data, we are aware that it is difficult to say if the model produced effective outcomes for classification. We observed that on `age` correlation data, the model converged after roughly 15-17 epochs. On the other hand, for `groupmean` and `smfq`, the model converged very quickly after only 10 epochs.
+
+Furthermore, the confidence interval seems very low for the model output.
+
+```txt
+1/1 [==============================] - 0s 305ms/step
+This model is 4.95 percent confident that CT scan is unmeddep
+This model is 95.05 percent confident that CT scan is other
+```
+
+This shows a contrary to the findings from the actual study, where there is a siginficant different between the MDD patients and the controls.
 
 We also have a [Colab notebook](https://colab.research.google.com/drive/1H_pVmqi7TkZQ0G455Blea1DQl8SH5zkz?usp=sharing) avaialble with incomplete code. It took twice as long for the model to train on the Colab notebook so we decided to migrate the code to a local repo. All data and source code can be found in this repo.
 

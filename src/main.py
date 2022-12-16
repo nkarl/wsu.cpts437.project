@@ -24,8 +24,8 @@ print(
 
 
 # Load the training set and validating set.
-train_dataset = dataset_loader(x_train, y_train)
-validation_dataset = dataset_loader(x_val, y_val)
+train_dataset = dataset_loader(x_train, y_train, batch_size=16)
+validation_dataset = dataset_loader(x_val, y_val, batch_size=16)
 #Build the model
 class ImageSize:
     def __init__(self, x, y, z):

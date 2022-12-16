@@ -59,7 +59,7 @@ def build_model(dim, learn_rate=0.0001, decay_steps=100000, decay_rate=0.96):
 
 
 # # Only rescale.
-def dataset_loader(x, y, batch_size=2):
+def dataset_loader(x, y, batch_size=8):
     """
     Define data loaders.
     """
